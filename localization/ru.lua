@@ -991,6 +991,22 @@ return {
 					"{C:attention}#2#",
 				},
 			},
+			j_cry_foolhardy = {
+				name = "Foolhardy Джокер",
+				text = {
+					"{C:red}+#1#{} Множ если сыгранная",
+					"рука содержит {C:attention}#2#",
+				},
+			},
+			j_cry_formidiulosus = {
+				name = "Formidiulosus",
+				text = {
+					"Когда {X:cry_cursed,C:white}Проклятый{} Джокер получен, уничтожает его",
+					"Создает {C:attention}#1#{} {C:dark_edition}Негативных {C:cry_candy}Конф#<еты,y>1#{} на выходе из магазина",
+					"Дает {X:dark_edition,C:white}^#2#{} Множ. за каждую {C:cry_candy}Конфету{}",
+					"{C:inactive}(Сейчас {X:dark_edition,C:white}^#3#{C:inactive} Множ)",
+				},
+			},
 			j_cry_fspinner = {
 				name = "Fidget Spinner",
 				text = {
