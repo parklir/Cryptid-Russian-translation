@@ -1002,7 +1002,7 @@ return {
 				name = "Formidiulosus",
 				text = {
 					"Когда {X:cry_cursed,C:white}Проклятый{} Джокер получен, уничтожает его",
-					"Создает {C:attention}#1#{} {C:dark_edition}Негативных {C:cry_candy}Конф#<еты,y>1#{} на выходе из магазина",
+					"Создает {C:attention}#1#{} {C:dark_edition}Негативных {C:cry_candy}Конфеты{} на выходе из магазина",
 					"Дает {X:dark_edition,C:white}^#2#{} Множ. за каждую {C:cry_candy}Конфету{}",
 					"{C:inactive}(Сейчас {X:dark_edition,C:white}^#3#{C:inactive} Множ)",
 				},
