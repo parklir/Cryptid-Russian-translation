@@ -27,7 +27,7 @@ target = '''=[SMODS _ "src/card_draw.lua"]'''
 pattern = "if self.sticker and G.shared_stickers[self.sticker] then"
 position = "before"
 payload = '''
-if not Cryptid.shared_gamesets then
+if not Cryptid.shared_gamesets and G.ASSET_ATLAS["cry_gameset"] then
     Cryptid.shared_gamesets = {
         modest = Sprite(0, 0, G.CARD_W, G.CARD_H, G.ASSET_ATLAS["cry_gameset"], {x = 0,y = 0}),
         mainline = Sprite(0, 0, G.CARD_W, G.CARD_H, G.ASSET_ATLAS["cry_gameset"], {x = 1,y = 0}),
@@ -59,7 +59,7 @@ match_indent = true
 target = '''=[SMODS _ "src/card_draw.lua"]'''
 pattern = "if self.debuff then"
 position = "at"
-payload = "if self.debuff or Cryptid.gameset(self) == 'disabled' or (self.config.center.gameset_config and self.config.center.gameset_config[Cryptid.gameset(self)] and self.config.center.gameset_config[Cryptid.gameset(self)].disabled) or (self.config.center.cry_disabled and not self.gameset_select) then"
+payload = "if self.debuff or (Cryptid.gameset and Cryptid.gameset(self) == 'disabled') or (self.config.center.gameset_config and self.config.center.gameset_config[Cryptid.gameset(self)] and self.config.center.gameset_config[Cryptid.gameset(self)].disabled) or (self.config.center.cry_disabled and not self.gameset_select) then"
 match_indent = true
 
 # Shine on Oversaturated to make it more noticable
@@ -78,7 +78,9 @@ target = "engine/node.lua"
 pattern = "if self.children.h_popup then"
 position = 'at'
 match_indent = true
-payload = "if self.children.h_popup and not (self.force_popup and self:force_popup()) then"
+payload = '''
+if self.children.h_popup and not (self.force_popup and self:force_popup() and Cryptid["force_tooltips"]) then
+'''
 
 # Let description tooltips work for any object
 [[patches]]
@@ -87,7 +89,7 @@ target = "functions/misc_functions.lua"
 pattern = "detailed_tooltip = part.control.T and (G.P_CENTERS[part.control.T] or G.P_TAGS[part.control.T]) or nil,"
 position = 'at'
 match_indent = true
-payload = "detailed_tooltip = part.control.T and Cryptid.get_center(part.control.T) or nil,"
+payload = "detailed_tooltip = part.control.T and (Cryptid.get_center(part.control.T) or (G.P_CENTERS[part.control.T] or G.P_TAGS[part.control.T])) or nil,"
 
 # Remove consumable use UI in the collection
 [[patches]]
